@@ -442,7 +442,7 @@ DELIMITER ;
 select * from formularios;
 
 insert into formularios (fecha_carga, estado, id_postulante, presenta_garante)
-values (now(),1, 16,0);
+values ("2023-06-17",1, 2,0);
 
 -- CREA PLAN DE CUOTAS AL ACTUALIZAR ESTADO-- 
 
@@ -482,6 +482,7 @@ CREATE PROCEDURE `actualizar_estado_formulario`(
 )
 BEGIN
     UPDATE formularios SET estado = p_estado WHERE id_formulario = p_id_formulario;
+	  SELECT '¡El estado se actualizo correctamente!';
 END
 $$
 DELIMITER ;
@@ -497,6 +498,7 @@ BEGIN
     UPDATE `postulantes`
     SET `presenta_recibo` = `p.nuevo_valor`
     WHERE `id_postulante` = `p.id_postulante`;
+        select '¡Campo actualizado!';
 END
 $$
 DELIMITER ;
